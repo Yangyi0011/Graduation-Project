@@ -1,0 +1,57 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>401</title>
+
+    <base id="base" href="http://120.78.59.162:8081/">
+
+    <link rel="stylesheet" href="static/plug-in/bootstrap3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/errorTips.css">
+
+    <script type="text/javascript" src="static/plug-in/jquery-3.2.1/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="static/plug-in/bootstrap3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="static/plug-in/layui-v2.4.5/layui/layui.all.js"></script>
+    <script type="text/javascript" src="static/js/utils.js"></script>
+
+</head>
+<body onload="IFrameResize()" id="body">
+    <div class="col-md-12 bg_css">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 center-vertical text-center">
+            <p class="notFond1">401</p>
+            <h1 class="notFond2">访问路径异常</h1>
+            <h2 class="notFond3">非常抱歉，您的访问路径异常，您可以选择重新
+                <a  href="webpages/static/login.html" target="_top">&nbsp;登录&nbsp;</a>或者
+                <a href="webpages/static/contact.html" target="_top">&nbsp;联系我们&nbsp;</a></h2>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</body>
+<script type="text/javascript">
+    //获取项目根路径
+    var ctx = null;
+    $(document).ready(function loading() {
+        ctx = getContext();
+        $("#base").attr('href', ctx+'/'); //设置base标签的href属性的值
+
+        loadPageData();
+        IFrameResize();
+    });
+    
+    function loadPageData() {
+        var data =
+            '<div class="col-md-12 bg_css">' +
+            '    <div class="col-md-2"></div>' +
+            '    <div class="col-md-8 center-vertical text-center">' +
+            '        <p class="notFond1">401</p>' +
+            '        <h1 class="notFond2">访问路径异常</h1>' +
+            '        <h2 class="notFond3">非常抱歉，您的访问路径异常，您可以选择重新' +
+            '            <a  href="'+ctx+'/webpages/static/login.html" target="_top">&nbsp;登录&nbsp;</a>或者' +
+            '            <a href="'+ctx+'/webpages/static/contact.html" target="_top">&nbsp;联系我们&nbsp;</a></h2>' +
+            '    </div>' +
+            '    <div class="col-md-2"></div>' +
+            '</div>';
+        $("#body").html(data);
+    }
+</script>
+</html>
