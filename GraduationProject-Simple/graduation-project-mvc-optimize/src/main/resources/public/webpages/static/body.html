@@ -1,0 +1,210 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>首页内容</title>
+    <base id="base" href="http://120.78.59.162:8082/">
+
+    <link rel="stylesheet" href="static/plug-in/bootstrap3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/plug-in/layui-v2.4.5/layui/css/layui.css">
+    <link rel="stylesheet" href="static/css/body.css">
+
+    <script type="text/javascript" src="static/plug-in/jquery-3.2.1/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="static/plug-in/bootstrap3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="static/plug-in/layui-v2.4.5/layui/layui.all.js"></script>
+    <script type="text/javascript" src="static/plug-in/jquery-cookie/jquery.cookie.js"></script>
+    <script type="text/javascript" src="static/js/utils.js"></script>
+
+</head>
+<body id="" onload="IFrameResize()">
+<!--身体部分,各个页面跳转显示-->
+<div id="main" class="main text-center">
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8 text-center" id="pageList">
+            <div class="row">
+                <div class="col-sm-4">
+                    <a href="#">
+                        <img class="newInfoImg" src="static/images/dizheng.jpg">
+                    </a>
+                </div>
+                <div class="col-sm-8">
+                    <a href="#" target="_blank">
+                        <h3 class="newInfoTitle">花莲发生6.7级地震 系台湾近五年最大地震之一</h3>
+                        <p class="newInfoContent">
+                            内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                            内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                            内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                        </p>
+                    </a>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <a href="#" target="_blank">
+                                <span class="author">作者</span>
+                            </a>
+                        </div>
+                        <div class="col-sm-6">
+                            <span class="time">2019-4-18 15:34:40</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-4">
+                    <a href="#">
+                        <img class="newInfoImg" src="static/images/dizheng.jpg">
+                    </a>
+                </div>
+                <div class="col-sm-8">
+                    <a href="#" target="_blank">
+                        <h3 class="newInfoTitle">花莲发生6.7级地震 系台湾近五年最大地震之一</h3>
+                        <p class="newInfoContent">
+                            内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                            内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                            内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                        </p>
+                    </a>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <a href="#" target="_blank">
+                                <span class="author">作者</span>
+                            </a>
+                        </div>
+                        <div class="col-sm-6">
+                            <span class="time">2019-4-18 15:34:40</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="col-sm-2"></div>
+        </div>
+    </div>
+    <!--分页-->
+    <div id="pageBar" class="text-center"></div>
+</div>
+</body>
+
+<script type="text/javascript">
+    var layui_page;    //layui分页模块
+    var layui_element; //layui element 模块
+
+    //获取项目根路径
+    var ctx = null;
+
+    $(document).ready(function loading() {
+        ctx = getContext();
+        $("#base").attr('href', ctx+'/'); //设置base标签的href属性的值
+
+        layui.use('laypage', function () {
+            layui_page = layui.laypage;
+        });
+        layui.use('element', function () {
+            layui_element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+        });
+        getPageData(1);
+        IFrameResize();
+    });
+
+    function getPageData(currentPage) {
+        $.ajax({
+            type: 'GET',
+            url: ctx + "/newsInfo/list",
+            data: {
+                currentPage: currentPage,
+                rows: 9,
+                condition: JSON.stringify({searchContent: ''})
+            },
+            dataType: "json",
+            success: function (data) {
+                var jsonData = eval(data);
+                var code = jsonData.code;
+                var msg = jsonData.msg;
+
+                if (code === 1) {
+
+                    var items = jsonData.data.items;
+                    var total = jsonData.data.total;
+
+                    if (total === 0) {
+                        $("#pageList").html('<div style="height: 70%;"><h3 class="col-md-12 text-center">' + msg + '</h3></div>');
+                    }
+
+                    var newsContext = '<hr>';
+                    $.each(items, function (index, newsInfo) {
+                        var id = newsInfo.id;
+                        var title = titleSubstring(newsInfo.title);
+                        var newsContentId = newsInfo.newsContentId;
+
+                        var content = getNewsContentById(ctx,newsContentId).content.trim();
+                        content = contentSubstring(pageContent(content));//去掉所有的html标记和空格
+
+                        var imgs = newsInfo.imgs.toString().split(",");
+                        var remarks = newsInfo.remarks;
+                        var createUserId = newsInfo.createUserId;
+                        var createDate = new Date(newsInfo.createDate).toLocaleString('chinese', {hour12: false}).replace(/:d{1,2}$/, ' ');
+                        var updateUserId = newsInfo.updateUserId;
+                        var updateDate = newsInfo.updateDate;
+
+                        var nickname = getNicknameByUserId(ctx, createUserId);
+
+                        newsContext +=
+                            '<div class="row">' +
+                            '   <div class="col-sm-4">' +
+                            '       <a href="' + imgs[0] + '" target="_blank">' +
+                            '           <img class="newInfoImg" src="' + imgs[0] + '">' +
+                            '       </a>' +
+                            '   </div>' +
+                            '   <div class="col-sm-8">' +
+                            '       <a href="' + ctx + '/webpages/static/newsInfo.html?id=' + id + '" target="_blank">' +
+                            '           <h3 class="newInfoTitle" title="'+newsInfo.title+'">' + title + '</h3>' +
+                            '           <p class="newInfoContent">' + content + '</p>' +
+                            '       </a>' +
+                            '       <div class="row">' +
+                            '           <div class="col-sm-6">' +
+                            '               <span class="author">作者：' + nickname + '</span>' +
+                            '           </div>' +
+                            '           <div class="col-sm-6">' +
+                            '               <span class="time">' + createDate + '</span>' +
+                            '           </div>' +
+                            '       </div>' +
+                            '   </div>' +
+                            '</div>' +
+                            '<hr>'
+                    });
+                    $("#pageList").html(newsContext);
+
+                } else {
+                    $("#pageList").html('<div style="height: 70%;"><h3 class="col-md-12 text-center">' + msg + '</h3></div>');
+                }
+                //生成分页
+                createPage(total, currentPage);
+                IFrameResize();
+            }
+            , error: function (jqXHR, textStatus, errorThrown) {
+                ajaxErrorHandler(jqXHR); //ajax请求异常统一处理
+            }
+        });
+    }
+
+    /*生成分页*/
+    function createPage(dataTotal, currentPage) {
+        layui_page.render({
+            elem: 'pageBar'      //div的ID
+            , count: dataTotal        //数据总数，从服务端得到
+            , limit: 10              //每页显示数据条数
+            , groups: 10             //连续出现的页码数
+            , theme: '#437be2'           //自定义主题颜色
+            , curr: currentPage             //当前页
+            , jump: function (obj, first) {
+                //页码切换回调
+                if (!first) {
+                    //重新获取新分页数据
+                    getPageData(obj.curr);
+                }
+            }
+        });
+    }
+</script>
+
+</html>

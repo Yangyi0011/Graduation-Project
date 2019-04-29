@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/graduation-project-admin/graduation-project-admin.iml" filepath="$PROJECT_DIR$/graduation-project-admin/graduation-project-admin.iml" />
       <module fileurl="file://$PROJECT_DIR$/graduation-project-mvc/graduation-project-mvc.iml" filepath="$PROJECT_DIR$/graduation-project-mvc/graduation-project-mvc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/graduation-project-mvc-optimize/graduation-project-mvc-optimize.iml" filepath="$PROJECT_DIR$/graduation-project-mvc-optimize/graduation-project-mvc-optimize.iml" />
     </modules>
   </component>
 </project>

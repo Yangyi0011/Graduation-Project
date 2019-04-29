@@ -8,11 +8,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="graduation-project-admin" />
         <module name="graduation-project-mvc" />
+        <module name="graduation-project-mvc-optimize" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="graduation-project-admin" target="1.8" />
       <module name="graduation-project-mvc" target="1.8" />
+      <module name="graduation-project-mvc-optimize" target="1.8" />
       <module name="graduation-project-simple" target="1.8" />
     </bytecodeTargetLevel>
   </component>

@@ -65,6 +65,8 @@ spring:
       name: admin
       password: toor
       roles: Role_Admin
+
+  #数据源配置
   datasource:
     username: root
     password: toor

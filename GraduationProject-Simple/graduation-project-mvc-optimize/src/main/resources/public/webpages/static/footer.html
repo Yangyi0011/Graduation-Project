@@ -1,0 +1,32 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>首页页脚</title>
+    <base id="base" href="http://120.78.59.162:8082/">
+
+    <link rel="stylesheet" href="static/plug-in/bootstrap3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/plug-in/layui-v2.4.5/layui/css/layui.css">
+    <link rel="stylesheet" href="static/css/body.css">
+
+    <script type="text/javascript" src="static/plug-in/jquery-3.2.1/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="static/plug-in/bootstrap3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="static/plug-in/layui-v2.4.5/layui/layui.all.js"></script>
+    <script type="text/javascript" src="static/plug-in/jquery-cookie/jquery.cookie.js"></script>
+    <script type="text/javascript" src="static/js/utils.js"></script>
+</head>
+<footer>
+    <!-- 辅助元素，一般用于移动设备下遮罩 -->
+    <div class="layadmin-body-shade" layadmin-event="shade"></div>
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        © layui.com - 底部固定区域
+    </div>
+</footer>
+<script type="text/javascript">
+    var ctx = null;
+    $(document).ready(function () {
+        ctx = getContext();
+        $("#base").attr('href',ctx+'/'); //设置base标签的href属性的值
+    });
+</script>
+</html>

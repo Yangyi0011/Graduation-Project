@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yangyi.graduationproject.dao.NewsInfoMapper">
+    <!--使用二级缓存-->
+    <cache-ref namespace="com.yangyi.graduationproject.dao.ResourceMapper"></cache-ref>
+
+    <sql id="newsInfoColumns">
+      id,title,imgs,news_content_id,remarks,create_user_id,create_date,update_user_id,update_date
+    </sql>
+
+    <!-- public NewsInfo getNewsInfoById(@Param("id") Integer id);
+        通过id获取新闻信息
+    -->
+    <select id="getNewsInfoById" resultType="com.yangyi.graduationproject.entities.NewsInfo">
+        SELECT <include refid="newsInfoColumns"></include>
+        FROM tab_news_info
+        WHERE id = #{id}
+    </select>
+
+    <!--
+        /**
+     * 获取当前查询条件下的数据条数
+     * @param condition：自定义查询条件
+     * @return ：数据条数
+     */
+    public Long count(@Param("condition") Map<String, Object> condition);
+    -->
+    <select id="count" resultType="long">
+        SELECT count(id)
+        FROM tab_news_info
+        <trim prefix="WHERE" prefixOverrides="and">
+            <if test="condition != null">
+                <foreach collection="condition" index="key" item="value">
+                    <if test="key == &quot;title&quot; and value != null and value != '' ">
+                        and title = #{value}
+                    </if>
+                    <if test="(key == &quot;newsContentId&quot; or key == &quot;news_content_id&quot;) and value != null and value != '' ">
+                        and news_content_id = #{value}
+                    </if>
+                    <if test="key == &quot;remarks&quot; and value != null ">
+                        and remarks = #{value}
+                    </if>
+                    <if test="(key == &quot;createUserId&quot; or key == &quot;create_user_id&quot;) and value != null and value != '' ">
+                        and create_user_id = #{value}
+                    </if>
+                    <if test="(key == &quot;updateUserId&quot; or key == &quot;update_user_id&quot;) and value != null and value != '' ">
+                        and update_user_id = #{value}
+                    </if>
+
+                    <if test="key == &quot;searchContent&quot; and value != null and value != '' ">
+                        and
+                        (
+                        title like CONCAT('%',#{value},'%')
+                        OR state like CONCAT('%',#{value},'%')
+                        OR remarks like CONCAT('%',#{value},'%')
+                        )
+                    </if>
+                </foreach>
+            </if>
+        </trim>
+    </select>
+
+    <select id="getNewsInfos" resultType="com.yangyi.graduationproject.entities.NewsInfo">
+        SELECT <include refid="newsInfoColumns"></include>
+        FROM tab_news_info
+        <trim prefix="WHERE" prefixOverrides="and">
+            <if test="condition != null">
+                <foreach collection="condition" index="key" item="value">
+                    <if test="key == &quot;title&quot; and value != null and value != '' ">
+                        and title = #{value}
+                    </if>
+                    <if test="(key == &quot;newsContentId&quot; or key == &quot;news_content_id&quot;) and value != null and value != '' ">
+                        and news_content_id = #{value}
+                    </if>
+                    <if test="key == &quot;remarks&quot; and value != null ">
+                        and remarks = #{value}
+                    </if>
+                    <if test="(key == &quot;createUserId&quot; or key == &quot;create_user_id&quot;) and value != null and value != '' ">
+                        and create_user_id = #{value}
+                    </if>
+                    <if test="(key == &quot;updateUserId&quot; or key == &quot;update_user_id&quot;) and value != null and value != '' ">
+                        and update_user_id = #{value}
+                    </if>
+
+                    <if test="key == &quot;searchContent&quot; and value != null and value != '' ">
+                        and
+                        (
+                        title like CONCAT('%',#{value},'%')
+                        OR state like CONCAT('%',#{value},'%')
+                        OR remarks like CONCAT('%',#{value},'%')
+                        )
+                    </if>
+                </foreach>
+            </if>
+        </trim>
+        ORDER BY id DESC
+        <if test="start != null and number != null">
+            LIMIT #{start},#{number}
+        </if>
+    </select>
+
+    <!--
+    public Integer add(@Param("newsInfo") NewsInfo newsInfo;
+    新闻信息添加，需要开启 Mysql 的allowMultiQueries连接属性，即连接时添加allowMultiQueries=true
+    useGeneratedKeys="true" keyProperty="id"：指定自增id，插入后可以直接获取
+    -->
+    <insert id="add" parameterType="com.yangyi.graduationproject.entities.NewsInfo" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO tab_news_info(title,imgs,news_content_id,remarks,create_user_id,create_date,update_user_id,update_date)
+        VALUES (#{newsInfo.title},#{newsInfo.imgs},#{newsInfo.newsContentId},#{newsInfo.remarks},#{newsInfo.createUserId},#{newsInfo.createDate},
+        #{newsInfo.updateUserId},#{newsInfo.updateDate})
+    </insert>
+
+    <!--
+            public Integer update(@Param("newsInfo") NewsInfo newsInfo);
+            更新新闻信息信息
+            -->
+    <update id="update" parameterType="com.yangyi.graduationproject.entities.NewsInfo">
+        UPDATE tab_news_info
+        <trim prefix="set" suffixOverrides=",">
+            <if test="newsInfo.title != null and newsInfo.title != '' ">
+                title = #{newsInfo.title},
+            </if>
+            <if test="newsInfo.imgs != null and newsInfo.imgs != '' ">
+                imgs = #{newsInfo.imgs},
+            </if>
+            <if test="newsInfo.remarks != null and newsInfo.remarks != '' ">
+                remarks = #{newsInfo.remarks},
+            </if>
+            <if test="newsInfo.createUserId != null and newsInfo.createUserId != '' ">
+                create_user_id = #{newsInfo.createUserId},
+            </if>
+            <if test="newsInfo.createDate != null">
+                create_date = #{newsInfo.createDate},
+            </if>
+            <if test="newsInfo.updateUserId != null and newsInfo.updateUserId != '' ">
+                update_user_id = #{newsInfo.updateUserId},
+            </if>
+            <if test="newsInfo.updateDate != null">
+                update_date = #{newsInfo.updateDate},
+            </if>
+
+        </trim>
+        WHERE id = #{newsInfo.id}
+    </update>
+
+    <!--
+       public Integer delete(@Param("id") Integer id);
+       通过id删除新闻信息
+       -->
+    <delete id="delete">
+        DELETE FROM tab_news_info
+        WHERE id = #{id}
+    </delete>
+</mapper>
