@@ -1,0 +1,159 @@
+package com.yangyi.graduationproject.service.impl;
+
+import com.yangyi.graduationproject.controller.validation.TC_Add;
+import com.yangyi.graduationproject.controller.validation.TC_Update;
+import com.yangyi.graduationproject.dao.CommentMapper;
+import com.yangyi.graduationproject.entities.Comment;
+import com.yangyi.graduationproject.exception.DeleteException;
+import com.yangyi.graduationproject.exception.InsertException;
+import com.yangyi.graduationproject.exception.UpdateException;
+import com.yangyi.graduationproject.service.CommentService;
+import com.yangyi.graduationproject.utils.StringUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
+
+import java.util.List;
+import java.util.Map;
+
+@Service("commentService")
+public class CommentServiceImpl implements CommentService {
+    @Qualifier("commentMapper")
+    @Autowired
+    CommentMapper commentMapper;
+
+    private static final String COMMENT_CAHCE="comment";
+    private static final String COMMENTS_CAHCE="comments";
+
+    /**
+     * 通过 id 获取留言信息
+     * @param id ：留言ID
+     * @return 返回留言对象
+     */
+    @Cacheable(value = COMMENT_CAHCE,key = "#id")
+    @Override
+    public Comment getCommentById(String id) {
+        return StringUtil.isEmpty(id) ? null : commentMapper.getCommentById(id);
+    }
+
+    /**
+     * 获取所有留言对象
+     * @param condition：自定义查询条件，模糊查询的 key 固定为 searchContent
+     * @return 返回留言对象集合
+     */
+    @Override
+    public List<Comment> getComments(Map<String,Object> condition) {
+        return getComments(null, null, condition);
+    }
+
+    /**
+     * 获取所有留言对象，支持分页
+     * @param currentPage：当前页
+     * @param rows：每页要显示的数据条数
+     * @param condition：自定义查询条件，模糊查询的 key 固定为 searchContent
+     * @return 返回留言对象集合
+     */
+    @Cacheable(value = COMMENTS_CAHCE)
+    @Override
+    public List<Comment> getComments(Integer currentPage, Integer rows, Map<String,Object> condition) {
+        if (currentPage != null && rows != null) {
+            if (currentPage < 0 || rows < 0) {
+                return null;
+            } else {
+                Integer start = (currentPage - 1) * rows;   //计算当前页的数据是从第几条开始查询
+                return commentMapper.getComments(start, rows, condition);
+            }
+        } else {
+            return commentMapper.getComments(null, null, condition);
+        }
+    }
+
+    @CacheEvict(value = {COMMENTS_CAHCE},allEntries = true)
+    @Override
+    public Integer add(@Validated(value = {TC_Add.class}) Comment comment) {
+        InsertException insertException;
+        if (comment == null){
+            insertException = new InsertException("添加失败，添加对象不能为空");
+            throw insertException;
+        }
+        Integer add = commentMapper.add(comment);
+        if (add == 0) {
+            insertException = new InsertException("添加失败，请重试");
+            throw insertException;
+        }
+        return add;
+    }
+
+
+    @CacheEvict(value = COMMENT_CAHCE,key = "#comment.id")
+    @Override
+    public Integer update(@Validated(value = {TC_Update.class}) Comment comment) {
+        UpdateException updateException;
+        if (comment == null){
+            updateException = new UpdateException("更新失败，请先选择更新对象");
+            throw updateException;
+        }
+        Integer update = commentMapper.update(comment);
+        if (update == 0){
+            updateException = new UpdateException("更新失败，请重试");
+            throw updateException;
+        }
+        return update;
+    }
+
+
+    @CacheEvict(value = {COMMENT_CAHCE,COMMENTS_CAHCE},allEntries = true)
+    @Override
+    public Integer delete(String id) {
+        DeleteException deleteException;
+        if (StringUtil.isEmpty(id)){
+            deleteException = new DeleteException("删除失败，请先选择要删除的对象");
+            throw deleteException;
+        }
+
+        //保证删除对象存在
+        Comment comment = getCommentById(id);
+        if (comment == null){
+            deleteException = new DeleteException("删除失败，对象不存在或已被删除");
+            throw deleteException;
+        }
+
+        //实行软删除
+        comment.setState(-1);
+        Integer delete = commentMapper.update(comment);
+
+        if (delete == 0){
+            deleteException = new DeleteException("删除失败，请稍后重试");
+            throw deleteException;
+        }
+        
+        return delete;
+    }
+
+    /**
+     * 批量删除
+     *
+     * @param ids：需要删除的对象的id集
+     * @return 返回操作结果（1：删除成功，0：删除失败）
+     * 添加事务，保证中间删除失败时可以回滚
+     */
+    @Transactional
+    @Override
+    public Integer batchDelete(String ids) {
+        if (StringUtil.isEmpty(ids))
+            return 0;
+        String[] arr = ids.split(",");  //分割成数组
+        for (String id : arr) {
+            Integer res = this.delete(id);
+            if (res == 0) {
+                return 0;
+            }
+        }
+        return 1;
+    }
+}

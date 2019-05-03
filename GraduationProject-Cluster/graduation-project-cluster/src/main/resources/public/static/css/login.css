@@ -1,0 +1,38 @@
+@charset "UTF-8";
+.login_div
+{
+
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
+.login_input
+{
+    border:solid #000000 1px;
+    height: 40px;
+    margin-top: 30px;
+}
+
+.captcha_css
+{
+    margin-top: 30px;
+    height: 40px;
+}
+
+.login_submit
+{
+    border:0px;
+    height: 40px;
+    border-radius: 25px;
+    margin-top: 20px;
+    background-color: #2D6CDF;
+    color: #FFFFFF;
+    font-family: 'Lora', serif;
+    font-size: 20px;
+}
+
+button.login_submit:hover {
+    background: #003f87;
+    color: #FFFFFF;
+}

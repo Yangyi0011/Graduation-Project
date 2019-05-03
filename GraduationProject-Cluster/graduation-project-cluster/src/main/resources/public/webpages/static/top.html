@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <title>顶部导航栏</title>
+    <base id="base" href="http://47.101.214.48:8888/">
+
+    <link rel="stylesheet" href="static/plug-in/bootstrap3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/plug-in/layui-v2.4.5/layui/css/layui.css">
+    <link rel="stylesheet" href="static/css/body.css">
+
+    <script type="text/javascript" src="static/plug-in/jquery-3.2.1/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="static/plug-in/bootstrap3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="static/plug-in/layui-v2.4.5/layui/layui.all.js"></script>
+    <script type="text/javascript" src="static/plug-in/jquery-cookie/jquery.cookie.js"></script>
+    <script type="text/javascript" src="static/js/utils.js"></script>
+</head>
+<body>
+
+<!--顶部导航栏-->
+<div class="row " id="topBar">
+    <div class="col-sm-12">
+        <ul class="layui-nav" id="index-nav" lay-filter="index-nav" style="position: fixed;z-index: 999;width: 100%;">
+            <li class="layui-nav-item">
+                <a href="/index.html" id="CT-index">首页</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="#" file="https://github.com/Yangyi0011">关于我们</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="#" file="/webpages/static/contact.html">留言咨询</a>
+            </li>
+            <li class="layui-nav-item" style="float: right">
+                <a href="#" file="/webpages/static/login.html">登录</a>
+            </li>
+            <li class="layui-nav-item" style="float: right">
+                <a href="#" file="/webpages/static/register.html">注册</a>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    var ctx = null;
+    var element = null;
+    $(document).ready(function () {
+        ctx = getContext();
+//        $("#base").attr('href', ctx+'/'); //设置base标签的href属性的值
+        loadLayuiElement();
+
+        loadUserInfo();
+    });
+
+    //加载用户信息
+    function loadUserInfo() {
+        var username = $.cookie('USERNAME');
+        if (username != null) {
+            var userInfo = getUserInfoByUsername(ctx, username);
+            if (userInfo !== null) {
+                var id = userInfo.id;
+                var nickname = userInfo.nickname;
+                var portraitImg = userInfo.portraitImg;
+
+                var info =
+                    '<li class="layui-nav-item">' +
+                    '   <a href="#" id="CT-index" file="/index.html">首页</a>' +
+                    '</li>' +
+                    '<li class="layui-nav-item">' +
+                    '   <a href="#" file="https://github.com/Yangyi0011">关于我们</a>' +
+                    '</li>'+
+                    '<li class="layui-nav-item">' +
+                    '    <a href="#" file="/webpages/static/contact.html">留言咨询</a>' +
+                    '</li>' +
+                    '<li class="layui-nav-item" style="float: right">' +
+                    '   <a href="#"><img src="' + ctx + '/' + portraitImg + '" class="layui-nav-img">' + nickname + '</a>' +
+                    '   <dl class="layui-nav-child">' +
+                    '       <dd><a href="#" file="/webpages/user/userInfo.html?id=' + id + '">个人中心</a></dd>' +
+                    '       <dd><a>消息通知</a></dd>' +
+                    '       <dd><a href="' + ctx + '/webpages/admin/index.html">后台管理系统</a></dd>' +
+                    '       <dd><a href="' + ctx + '/user/logout">退出</a></dd>' +
+                    '   </dl>' +
+                    '</li>';
+                $("#index-nav").html(info);
+                element.render("nav"); //重新渲染
+            }
+        }
+    }
+
+    //使用 element 模块
+    function loadLayuiElement() {
+        layui.use('element', function () {
+            element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+            //监听导航点击
+            element.on('nav(index-nav)', function (elem) {
+                //console.log(elem)
+                layer.msg(elem.text());//弹出提示
+                var text = elem.text();
+                var loadUrl = null;
+                if (text != null) {
+                    if (text == '首页' || text == '关于我们') {
+                        if (text == '首页'){
+                            loadUrl = ctx + "/";
+                        }else {
+                            loadUrl = $(this).attr("file");
+                        }
+                        top.window.location = loadUrl;
+                    } else {
+                        loadUrl = ctx + $(this).attr("file");
+                        //通过修改 iframe 的 url 来切换页面，注：要用此方法，点击处<a>标签必须是 href="#"
+                        $("#IF-body").attr('src', loadUrl);
+                    }
+                }
+            });
+            element.render("nav");
+        });
+    }
+
+</script>
+</html>

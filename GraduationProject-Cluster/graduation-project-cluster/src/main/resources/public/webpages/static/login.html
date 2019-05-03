@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>登录</title>
+    <base id="base" href="http://47.101.214.48:8888/">
+
+    <link rel="stylesheet" href="static/plug-in/bootstrap3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/plug-in/layui-v2.4.5/layui/css/layui.css">
+    <link rel="stylesheet" href="static/css/body.css">
+    <link rel="stylesheet" href="static/css/login.css">
+
+    <script type="text/javascript" src="static/plug-in/jquery-3.2.1/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="static/plug-in/bootstrap3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="static/plug-in/layui-v2.4.5/layui/layui.all.js"></script>
+    <script type="text/javascript" src="static/plug-in/jquery-cookie/jquery.cookie.js"></script>
+    <script type="text/javascript" src="static/js/utils.js"></script>
+</head>
+
+<body onload="IFrameResize()">
+<div id="main" class="main text-center">
+    <h3 class="col-md-12 text-center my_title2">登录</h3>
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <input type="text" class="col-sm-6 login_input" name="username" id="username" placeholder="请填写用户名" required="" />
+        <div class="col-sm-3"></div>
+    </div>
+    <div id="usernameMsg"></div>
+
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <input type="password"  class="col-sm-6 login_input" name="password" id="password" placeholder="请填写密码" required="" />
+        <div class="col-sm-3"></div>
+    </div>
+    <div id="passwordMsg"></div>
+
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <input type="text" name="kaptcha" id="kaptcha" class="col-sm-4 login_input" placeholder="请填写验证码" required="" />
+        <img id="kaptchaImg" class="col-sm-2 captcha_css" onclick="this.src='defaultKaptcha?d='+new Date()*1"
+             src="defaultKaptcha" />
+        <div class="col-sm-3"></div>
+    </div>
+    <div id="kaptchaMsg"></div>
+    <div class="row" style="margin-top: 10px">
+        <input type="checkbox" id="remember" name="remember">请记住我
+    </div>
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <button  id="submit" type="button"  class="col-md-6 login_submit" >登录</button>
+        <div class="col-sm-3"></div>
+    </div>
+</div>
+</body>
+
+<script type="text/javascript">
+    //获取项目根路径
+    var ctx = null;
+
+    /*输入控制*/
+    $(document).ready(function(){
+        ctx = getContext();
+//        $("#base").attr('href',ctx+'/'); //设置base标签的href属性的值
+
+        loadPublicBar(ctx,'topBar');   //加载TopBar
+        loadPublicBar(ctx,'footerBar');    //加载FooterBar
+
+        $('#username').blur(function () {
+            if ($('#username').val() =='')
+            {
+                $("#usernameMsg").html("<span style='color:#FF5722'>账号不能为空！</span>" );
+            }else {
+                $("#usernameMsg").html("");
+            }
+        });
+        $('#password').blur(function () {
+            if ($('#password').val() == '') {
+                $("#passwordMsg").html("<span style='color:#FF5722'>密码不能为空！</span>");
+            }else {
+                $("#passwordMsg").html("");
+            }
+        });
+        $('#kaptcha').blur(function () {
+            if ($('#kaptcha').val() == '') {
+                $("#kaptchaMsg").html("<span style='color:#FF5722'>验证码不能为空！</span>");
+            }else {
+                $("#kaptchaMsg").html("");
+            }
+        });
+    });
+
+
+    //提交登录
+    $("#submit").click(function () {
+        var username = $("#username").val();
+        var password = $("#password").val();
+        var kaptcha = $("#kaptcha").val();
+        var remember = $("#remember").is(":checked");
+
+        var data = null;
+        if(remember){
+            data = {
+                _method: "POST",
+                username: username,
+                password: password,
+                kaptcha: kaptcha,
+                remember:remember
+            };
+        }else {
+            data = {
+                _method: "POST",
+                username: username,
+                password: password,
+                kaptcha: kaptcha
+            };
+        }
+        //Restful风格的Ajax Post请求
+        $.ajax({
+            url: ctx+"/user/login",
+            type: "post",
+            data: data,
+            dataType: "json",
+            success: function (data) {
+                var jsonData = eval(data);   //数据解析
+                var code = jsonData.code;   //状态码
+                var msg = jsonData.msg;     //提示信息
+                var url = null;
+                var responseData = null;
+                var username = null;
+
+                if (code === 1) {
+                    layer.alert(msg, {
+                        time: 3000,
+                        icon: 1
+                    });
+                    responseData = jsonData.data;    //获取返回的数据集
+                    if (responseData !== null && responseData !== "") {
+                        url = responseData.url;
+
+                        username = responseData.username;
+                        if(remember){
+                            $.cookie('USERNAME',username , {expires: 14,path: '/'});//本项目内可用，存在时间为15天
+                        }else {
+                            $.cookie('USERNAME',username , {path: '/'});//不记住就为会话cookie
+                        }
+                    }
+                    if (url !== null) {
+                        console.log("即将跳转："+decodeURI( encodeURI(url)));
+                        setTimeout(function(){
+                            //登录成功后跳转
+                            parent.window.location = decodeURI( encodeURI(url));
+                        });
+                    }else {
+                        setTimeout(function(){
+                            parent.window.location = ctx+"/index.html";
+                        });
+                    }
+                } else {
+                    layer.alert(msg, {
+                        time: 3000,
+                        icon: 2
+                    });
+                    $("#username").css("border", "1px solid #cccccc");
+                    $("#password").css("border", "1px solid #cccccc");
+                    $("#kaptcha").css("border", "1px solid #cccccc");
+
+                    //显示错误信息
+                    $("#kaptchaMsg").html('<span style="color: #b92c28">' + msg + '</span>');
+                    //刷新验证码
+                    $("#kaptchaImg").attr("src",ctx+'/defaultKaptcha?d='+new Date()*1);
+                }
+            }
+            , error: function (jqXHR, textStatus, errorThrown) {
+                ajaxErrorHandler(jqXHR); //ajax请求异常统一处理
+            }
+        });
+    });
+</script>
+</html>
+
