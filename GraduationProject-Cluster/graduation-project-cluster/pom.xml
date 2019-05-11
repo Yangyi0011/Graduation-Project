@@ -87,11 +87,11 @@
 					<artifactId>spring-boot-starter-logging</artifactId>
 					<groupId>org.springframework.boot</groupId>
 				</exclusion>
-				<!--排除 tomcat 容器
+				<!--排除 tomcat 容器-->
 				<exclusion>
                     <artifactId>spring-boot-starter-tomcat</artifactId>
                     <groupId>org.springframework.boot</groupId>
-                </exclusion>-->
+                </exclusion>
 			</exclusions>
 		</dependency>
 		<!--将SpringBoot的日志框架切换成 log4j2-->

@@ -37,31 +37,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ehcache.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/graduation-project-mvc-optimize/src/main/resources/ehcache.xml">
+      <file leaf-file-name="application.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/graduation-project-mvc/src/main/resources/application.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="27">
-              <caret line="6" column="31" lean-forward="false" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ResourceServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/graduation-project-mvc-optimize/src/main/java/com/yangyi/graduationproject/service/impl/ResourceServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="25" column="13" lean-forward="false" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="log4j2.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/graduation-project-mvc-optimize/src/main/resources/log4j2.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1377">
-              <caret line="51" column="16" lean-forward="false" selection-start-line="51" selection-start-column="16" selection-end-line="51" selection-end-column="16" />
+            <state relative-caret-position="1917">
+              <caret line="71" column="23" lean-forward="false" selection-start-line="71" selection-start-column="23" selection-end-line="71" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -70,8 +50,18 @@
       <file leaf-file-name="application.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/graduation-project-mvc-optimize/src/main/resources/application.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="972">
-              <caret line="36" column="41" lean-forward="false" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="41" />
+            <state relative-caret-position="2970">
+              <caret line="110" column="0" lean-forward="false" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/graduation-project-mvc-optimize/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="73" column="32" lean-forward="false" selection-start-line="73" selection-start-column="32" selection-end-line="73" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -162,12 +152,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/graduation-project-mvc-optimize/src/main/resources/mybatis/mapper/NewsContentMapper.xml" />
         <option value="$PROJECT_DIR$/graduation-project-mvc-optimize/src/main/resources/mybatis/mapper/NewsInfoMapper.xml" />
         <option value="$PROJECT_DIR$/graduation-project-mvc-optimize/src/main/resources/public/static/css/body.css" />
         <option value="$PROJECT_DIR$/graduation-project-mvc-optimize/src/main/java/com/yangyi/graduationproject/cache/RedisCacheAutoConfiguration.java" />
         <option value="$PROJECT_DIR$/graduation-project-mvc-optimize/src/main/java/com/yangyi/graduationproject/controller/RedisTestController.java" />
-        <option value="$PROJECT_DIR$/graduation-project-mvc-optimize/pom.xml" />
         <option value="$PROJECT_DIR$/graduation-project-mvc-optimize/src/main/java/com/yangyi/graduationproject/GraduationProjectMvcOptimizeApplication.java" />
         <option value="$PROJECT_DIR$/graduation-project-mvc-optimize/src/main/java/com/yangyi/graduationproject/controller/NewsInfoController.java" />
         <option value="$PROJECT_DIR$/graduation-project-mvc-optimize/src/main/java/com/yangyi/graduationproject/dao/NewsContentMapper.java" />
@@ -212,7 +200,9 @@
         <option value="$PROJECT_DIR$/graduation-project-mvc-optimize/src/main/resources/public/webpages/user/userInfo.html" />
         <option value="$PROJECT_DIR$/graduation-project-mvc-optimize/src/main/resources/log4j2.xml" />
         <option value="$PROJECT_DIR$/graduation-project-mvc-optimize/src/main/resources/ehcache.xml" />
+        <option value="$PROJECT_DIR$/graduation-project-mvc/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/graduation-project-mvc-optimize/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/graduation-project-mvc-optimize/pom.xml" />
       </list>
     </option>
   </component>
@@ -261,9 +251,9 @@
   <component name="MavenRunner">
     <option name="jreName" value="1.8" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="508" />
-    <option name="y" value="15" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="566" />
+    <option name="y" value="4" />
     <option name="width" value="701" />
     <option name="height" value="738" />
   </component>
@@ -308,66 +298,14 @@
               <item name="GraduationProject-Simple" type="b2602c69:ProjectViewProjectNode" />
               <item name="graduation-project-mvc-optimize" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="GraduationProject-Simple" type="b2602c69:ProjectViewProjectNode" />
-              <item name="graduation-project-mvc-optimize" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GraduationProject-Simple" type="b2602c69:ProjectViewProjectNode" />
-              <item name="graduation-project-mvc-optimize" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GraduationProject-Simple" type="b2602c69:ProjectViewProjectNode" />
-              <item name="graduation-project-mvc-optimize" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GraduationProject-Simple" type="b2602c69:ProjectViewProjectNode" />
-              <item name="graduation-project-mvc-optimize" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GraduationProject-Simple" type="b2602c69:ProjectViewProjectNode" />
-              <item name="graduation-project-mvc-optimize" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="yangyi" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GraduationProject-Simple" type="b2602c69:ProjectViewProjectNode" />
-              <item name="graduation-project-mvc-optimize" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="yangyi" type="462c0819:PsiDirectoryNode" />
-              <item name="graduationproject" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GraduationProject-Simple" type="b2602c69:ProjectViewProjectNode" />
-              <item name="graduation-project-mvc-optimize" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -384,7 +322,7 @@
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth2" value="75" />
     <property name="RequestMappingsPanelOrder2" value="2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../GraduationProject-Cluster" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="SearchEverywhereHistoryKey" value="CopyOn&#9;PSI&#9;JAVA://java.util.concurrent.CopyOnWriteArrayList" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="LombokPluginEnabledInProject" value="true" />
@@ -670,15 +608,19 @@
       <workItem from="1556084521527" duration="36591000" />
       <workItem from="1556166851309" duration="3625000" />
       <workItem from="1556264337670" duration="87000" />
-      <workItem from="1556523869911" duration="22000" />
+      <workItem from="1556523869911" duration="553000" />
+      <workItem from="1556961787698" duration="385000" />
+      <workItem from="1556963972021" duration="698000" />
+      <workItem from="1557048465520" duration="1213000" />
+      <workItem from="1557297548759" duration="408000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="345594000" />
+    <option name="totallyTimeSpent" value="348829000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="776" extended-state="7" />
+    <frame x="-8" y="-8" width="1296" height="776" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41666666" sideWeight="0.50974023" order="8" side_tool="true" content_ui="tabs" />
@@ -701,7 +643,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45751634" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="控制板" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27191558" sideWeight="0.37795275" order="0" side_tool="false" content_ui="combo" x="253" y="81" width="240" height="664" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.37795275" order="0" side_tool="false" content_ui="combo" x="253" y="81" width="240" height="664" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="19" side_tool="false" content_ui="tabs" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -756,11 +698,11 @@
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287037" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="消息" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47058824" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45751634" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.45751634" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="控制板" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.37795275" order="0" side_tool="false" content_ui="combo" x="253" y="81" width="240" height="664" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="19" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26704547" sideWeight="0.37795275" order="0" side_tool="false" content_ui="combo" x="253" y="81" width="240" height="664" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -815,41 +757,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/graduation-project-mvc-optimize/src/main/java/com/yangyi/graduationproject/service/NewsInfoService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="50" column="19" lean-forward="false" selection-start-line="50" selection-start-column="19" selection-end-line="50" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Program Files/maven/my_maven_local_repository/org/springframework/spring-core/5.1.6.RELEASE/spring-core-5.1.6.RELEASE.jar!/org/springframework/cglib/proxy/MethodProxy.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="105" column="0" lean-forward="false" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/graduation-project-mvc-optimize/src/main/resources/mybatis/mapper/NewsContentMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-373">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/graduation-project-mvc-optimize/src/main/resources/mybatis/mapper/NewsInfoMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2592">
-          <caret line="6" column="65" lean-forward="false" selection-start-line="6" selection-start-column="65" selection-end-line="6" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/graduation-project-mvc-optimize/src/main/java/com/yangyi/graduationproject/dao/NewsContentMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="30" column="18" lean-forward="false" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/graduation-project-mvc-optimize/src/main/java/com/yangyi/graduationproject/dao/NewsInfoMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-837">
@@ -1150,9 +1057,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/graduation-project-mvc-optimize/src/main/resources/ehcache.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
+        <state relative-caret-position="162">
           <caret line="6" column="31" lean-forward="false" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1160,7 +1066,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="25" column="13" lean-forward="false" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1168,14 +1073,51 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1377">
           <caret line="51" column="16" lean-forward="false" selection-start-line="51" selection-start-column="16" selection-end-line="51" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graduation-project-mvc-optimize/src/main/java/com/yangyi/graduationproject/GraduationProjectMvcOptimizeApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="7" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graduation-project-mvc/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1917">
+          <caret line="71" column="23" lean-forward="false" selection-start-line="71" selection-start-column="23" selection-end-line="71" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/graduation-project-mvc-optimize/src/main/resources/application.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="972">
-          <caret line="36" column="41" lean-forward="false" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="41" />
+        <state relative-caret-position="2970">
+          <caret line="110" column="0" lean-forward="false" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Program Files/maven/my_maven_local_repository/io/undertow/undertow-core/2.0.19.Final/undertow-core-2.0.19.Final.pom">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-567">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Program Files/maven/my_maven_local_repository/org/springframework/boot/spring-boot-starter-undertow/2.1.4.RELEASE/spring-boot-starter-undertow-2.1.4.RELEASE.pom">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="46" column="25" lean-forward="false" selection-start-line="46" selection-start-column="25" selection-end-line="46" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graduation-project-mvc-optimize/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="73" column="32" lean-forward="false" selection-start-line="73" selection-start-column="32" selection-end-line="73" selection-end-column="32" />
           <folding />
         </state>
       </provider>

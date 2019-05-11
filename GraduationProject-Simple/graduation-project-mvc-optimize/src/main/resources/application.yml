@@ -41,6 +41,11 @@ spring:
     admin:
       client:
         url: "http://120.78.59.162:9999"  #指定 BootAdmin-Server 端的地址
+        instance:
+          #指定本服务的IP地址，让 BootAdmin 可以发现不同服务器上的应用
+          service-url: "http://120.78.59.162:8082"
+          #显示IP
+          prefer-ip: true
 
   main:
       #遇到相同名字的bean可以被覆盖
@@ -66,10 +71,9 @@ spring:
     #driver-class-name:springBoot2.x 后驱动程序通过SPI自动注册，并且通常不需要手动加载驱动程序类。
     druid:
       # 下面为连接池的补充设置，应用到上面所有数据源中
-      # 初始化大小，最小，最大
-      initial-size: 5
-      min-idle: 5
-      max-active: 20
+      initial-size: 5   #线程池初大小
+      min-idle: 5       #线程池最小空闲连接
+      max-active: 2000  #线程池最大连接数
       # 配置获取连接等待超时的时间
       max-wait: 60000
      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
