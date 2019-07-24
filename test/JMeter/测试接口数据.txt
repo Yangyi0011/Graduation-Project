@@ -1,0 +1,5 @@
+/newsInfo/list?currentPage=1&rows=10&condition=%7B%22searchContent%22%3A%22%22%7D
+/newsInfo/list?currentPage=2&rows=10&condition=%7B%22searchContent%22%3A%22%22%7D
+/newsInfo/list?currentPage=3&rows=10&condition=%7B%22searchContent%22%3A%22%22%7D
+/newsInfo/list?currentPage=4&rows=10&condition=%7B%22searchContent%22%3A%22%22%7D
+/newsInfo/list?currentPage=5&rows=10&condition=%7B%22searchContent%22%3A%22%22%7D
