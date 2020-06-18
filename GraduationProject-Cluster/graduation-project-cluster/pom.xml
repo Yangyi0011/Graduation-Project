@@ -24,7 +24,7 @@
 		<mybatis-starter.version>2.0.1</mybatis-starter.version>
 		<!-- mybatis-ehcache连接工具包 -->
 		<mybatis-ehcache.version>1.1.0</mybatis-ehcache.version>
-        <jackson-databind.version>2.9.8</jackson-databind.version>
+        <jackson-databind.version>2.10.0.pr1</jackson-databind.version>
 	</properties>
 
 	<dependencies>
